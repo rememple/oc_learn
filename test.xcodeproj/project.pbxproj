@@ -15,10 +15,10 @@
 		6EF01CCC22F2EC4E0072C9D5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF01CCB22F2EC4E0072C9D5 /* main.m */; };
 		6EF01CD622F2EC4E0072C9D5 /* testTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF01CD522F2EC4E0072C9D5 /* testTests.m */; };
 		6EF01CE122F2EC4E0072C9D5 /* testUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF01CE022F2EC4E0072C9D5 /* testUITests.m */; };
-		6EF01CF422F71CFF0072C9D5 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF01CF322F71CFF0072C9D5 /* Card.m */; };
-		6EF01CF822F727B60072C9D5 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF01CF722F727B60072C9D5 /* Deck.m */; };
 		6EF01CFB22F72D0C0072C9D5 /* PlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF01CFA22F72D0C0072C9D5 /* PlayingCard.m */; };
 		6EF01CFE22F733C30072C9D5 /* PlayingCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF01CFD22F733C30072C9D5 /* PlayingCardDeck.m */; };
+		BB78B2E623005D5E00A92363 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = BB78B2E523005D5E00A92363 /* Deck.m */; };
+		BB78B2E923005DE300A92363 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = BB78B2E823005DE300A92363 /* Card.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,14 +55,14 @@
 		6EF01CDC22F2EC4E0072C9D5 /* testUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = testUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EF01CE022F2EC4E0072C9D5 /* testUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = testUITests.m; sourceTree = "<group>"; };
 		6EF01CE222F2EC4E0072C9D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6EF01CF222F71CFF0072C9D5 /* Card.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Card.h; path = ../model/Card.h; sourceTree = "<group>"; };
-		6EF01CF322F71CFF0072C9D5 /* Card.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Card.m; path = ../model/Card.m; sourceTree = "<group>"; };
-		6EF01CF622F727B60072C9D5 /* Deck.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Deck.h; path = test/model/Deck.h; sourceTree = SOURCE_ROOT; };
-		6EF01CF722F727B60072C9D5 /* Deck.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Deck.m; path = test/model/Deck.m; sourceTree = SOURCE_ROOT; };
 		6EF01CF922F72D0C0072C9D5 /* PlayingCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayingCard.h; sourceTree = "<group>"; };
 		6EF01CFA22F72D0C0072C9D5 /* PlayingCard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayingCard.m; sourceTree = "<group>"; };
 		6EF01CFC22F733C30072C9D5 /* PlayingCardDeck.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayingCardDeck.h; sourceTree = "<group>"; };
 		6EF01CFD22F733C30072C9D5 /* PlayingCardDeck.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayingCardDeck.m; sourceTree = "<group>"; };
+		BB78B2E423005D5E00A92363 /* Deck.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Deck.h; sourceTree = "<group>"; };
+		BB78B2E523005D5E00A92363 /* Deck.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Deck.m; sourceTree = "<group>"; };
+		BB78B2E723005DE300A92363 /* Card.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
+		BB78B2E823005DE300A92363 /* Card.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,14 +148,14 @@
 		6EF01CF522F71D0B0072C9D5 /* New Group */ = {
 			isa = PBXGroup;
 			children = (
-				6EF01CF222F71CFF0072C9D5 /* Card.h */,
-				6EF01CF322F71CFF0072C9D5 /* Card.m */,
+				BB78B2E723005DE300A92363 /* Card.h */,
+				BB78B2E823005DE300A92363 /* Card.m */,
+				BB78B2E423005D5E00A92363 /* Deck.h */,
+				BB78B2E523005D5E00A92363 /* Deck.m */,
 				6EF01CF922F72D0C0072C9D5 /* PlayingCard.h */,
 				6EF01CFA22F72D0C0072C9D5 /* PlayingCard.m */,
 				6EF01CFC22F733C30072C9D5 /* PlayingCardDeck.h */,
 				6EF01CFD22F733C30072C9D5 /* PlayingCardDeck.m */,
-				6EF01CF622F727B60072C9D5 /* Deck.h */,
-				6EF01CF722F727B60072C9D5 /* Deck.m */,
 			);
 			path = "New Group";
 			sourceTree = "<group>";
@@ -291,12 +291,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EF01CFB22F72D0C0072C9D5 /* PlayingCard.m in Sources */,
-				6EF01CF822F727B60072C9D5 /* Deck.m in Sources */,
+				BB78B2E623005D5E00A92363 /* Deck.m in Sources */,
 				6EF01CC122F2EC4B0072C9D5 /* ViewController.m in Sources */,
 				6EF01CCC22F2EC4E0072C9D5 /* main.m in Sources */,
 				6EF01CFE22F733C30072C9D5 /* PlayingCardDeck.m in Sources */,
+				BB78B2E923005DE300A92363 /* Card.m in Sources */,
 				6EF01CBE22F2EC4B0072C9D5 /* AppDelegate.m in Sources */,
-				6EF01CF422F71CFF0072C9D5 /* Card.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,14 +467,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = test/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = demo.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -483,14 +487,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = test/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = demo.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -500,6 +508,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9R8YRYC29G;
 				INFOPLIST_FILE = testTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -518,6 +527,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9R8YRYC29G;
 				INFOPLIST_FILE = testTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
