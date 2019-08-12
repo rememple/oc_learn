@@ -46,7 +46,7 @@
 }
 
 + (NSArray *)rankStrings {
-    return @[@"?",@"A",@"2",@"3"];
+    return @[@"?",@"A",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9"];
 }
 
 + (NSUInteger)maxRank {
