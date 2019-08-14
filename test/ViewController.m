@@ -46,6 +46,11 @@
     _flipCount = flipCount;
     self.flipsLabel.text = [NSString stringWithFormat:@"flips: %d", self.flipCount];
 }
+- (IBAction)resetCards:(UIButton *)sender {
+    self.scoreLabel.text = [NSString stringWithFormat:@"score: %d", 0];
+    _game = nil;
+    [self updateUI];
+}
 - (IBAction)cardTouchButton:(UIButton *)sender {
     int chosenButtonIndex = [self.cardButtons indexOfObject:sender];
     [self.game chooseCardAtIndex:chosenButtonIndex];
