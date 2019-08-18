@@ -16,7 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithCardCount:(NSInteger)count usingDeck:(Deck *)deck;
 - (void)chooseCardAtIndex:(NSUInteger)index;
+- (void)chooseCardAtIndex2:(NSUInteger)index;
+- (void)chooseCardAtIndex3:(NSUInteger)index;
 - (Card *)cardAtIndex:(NSUInteger)index;
+- (int) getChosenCardCount;
 
 @property (nonatomic, readonly) NSInteger score;
 

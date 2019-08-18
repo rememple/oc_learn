@@ -18,6 +18,11 @@
 @property (strong, nonatomic) CardMatchingGame *game;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
+
+@property (nonatomic) NSInteger gameMode;
+@property (strong, nonatomic) UIAlertAction *okAction;
+@property (strong, nonatomic) UIAlertAction *cancelAction;
+
 @end
 
 @implementation ViewController
@@ -46,17 +51,43 @@
     _flipCount = flipCount;
     self.flipsLabel.text = [NSString stringWithFormat:@"flips: %d", self.flipCount];
 }
+- (IBAction)switchMode:(UISwitch *)sender {
+    UISwitch *switchButton = (UISwitch*)sender;
+    BOOL isButtonOn = [switchButton isOn];
+    if (isButtonOn) {
+        self.gameMode = 3;
+    }else {
+        self.gameMode = 2;
+    }
+}
 - (IBAction)resetCards:(UIButton *)sender {
-    self.scoreLabel.text = [NSString stringWithFormat:@"score: %d", 0];
-    _game = nil;
-    [self updateUI];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"确认要重置吗？" preferredStyle:UIAlertControllerStyleAlert];
+    _okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *_Nonnull action) {
+        self.scoreLabel.text = [NSString stringWithFormat:@"score: %d", 0];
+        self.game = nil;
+        [self updateUI];
+    }];
+    _cancelAction =[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alert addAction:_okAction];
+    [alert addAction:_cancelAction];
+    
+    // 弹出对话框
+    [self presentViewController:alert animated:true completion:nil];
 }
 - (IBAction)cardTouchButton:(UIButton *)sender {
-    int chosenButtonIndex = [self.cardButtons indexOfObject:sender];
-    [self.game chooseCardAtIndex:chosenButtonIndex];
-    NSLog(@"chosenButtonIndex==== %d", chosenButtonIndex);
+    NSInteger chosenButtonIndex = [self.cardButtons indexOfObject:sender];
+    int chosenCardCount = [self.game getChosenCardCount];
+    if ( _gameMode == 2) {
+        [self.game chooseCardAtIndex:chosenButtonIndex];
+    } else if (_gameMode == 3) {
+        if (chosenCardCount <= 1) {
+            [self.game chooseCardAtIndex2:chosenButtonIndex];
+        } else if (chosenCardCount == 2) {
+            [self.game chooseCardAtIndex3:chosenButtonIndex];
+        }
+    }
     [self updateUI];
-    NSLog(@"log...");
     self.flipCount++;
 
 ////    UIImage *cardImage = [UIImage imageNamed:@"stanford"];
@@ -80,19 +111,16 @@
 
 - (void)updateUI {
     for (UIButton *cardButton in self.cardButtons) {
-        int cardButtonIndex = [self.cardButtons indexOfObject:cardButton];
+        NSInteger cardButtonIndex = [self.cardButtons indexOfObject:cardButton];
         Card *card = [self.game cardAtIndex:cardButtonIndex];
         [cardButton setTitle:[self titleForCard:card] forState:UIControlStateNormal];
         [cardButton setBackgroundImage:[self backgroundImageForCard:card] forState:UIControlStateNormal];
         cardButton.enabled = !card.isMatched;
-        self.scoreLabel.text = [NSString stringWithFormat:@"score: %d", self.game.score];
-        NSLog(@"log....2");
-        NSLog(@"score = %d", self.game.score);
+        self.scoreLabel.text = [NSString stringWithFormat:@"score: %ld", self.game.score];
     }
 }
 
 - (NSString *)titleForCard:(Card *)card {
-    NSLog(@"log....3 %d", card.isChoosen);
     return card.isChoosen ? card.content : @"";
 }
 - (UIImage *)backgroundImageForCard:(Card *)card {

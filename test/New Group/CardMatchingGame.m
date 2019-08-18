@@ -52,7 +52,6 @@ static const int COST_TO_CHOOSE = 1;
     Card *card = [self cardAtIndex: index];
     if (!card.isMatched) {
         if (card.isChoosen) {
-            NSLog(@"card-chosen is true and change no");
             card.chosen = NO;
         } else {
             for (Card *otherCard in self.cards) {
@@ -71,9 +70,63 @@ static const int COST_TO_CHOOSE = 1;
             }
             self.score -= COST_TO_CHOOSE;
             card.chosen = YES;
-            NSLog(@"card-chosen is true and return yes");
         }
     }
+}
+
+- (void) chooseCardAtIndex2:(NSUInteger)index {
+    Card *card = [self cardAtIndex: index];
+    if (!card.isMatched) {
+        if (card.isChoosen) {
+            card.chosen = NO;
+        } else {
+            for (Card *otherCard in self.cards) {
+                if (otherCard.isChoosen && !otherCard.isMatched) {
+                    int matchScore = [card match:@[otherCard]];
+                    if (!matchScore) {
+                        self.score -= MISMATCH_PENALTY;
+                        otherCard.chosen = NO;
+                    } else {
+                        continue;
+                    }
+                    break;
+                }
+            }
+            self.score -= COST_TO_CHOOSE;
+            card.chosen = YES;
+        }
+    }
+    
+}
+
+- (void) chooseCardAtIndex3:(NSInteger)index {
+    Card *card = [self cardAtIndex: index];
+    for (Card *otherCard in self.cards) {
+        if (otherCard.isChoosen && !otherCard.isMatched) {
+            int matchScore = [card match:@[otherCard]];
+            if (matchScore) {
+                self.score += matchScore * MATCH_BONUS;
+                otherCard.matched = YES;
+                card.matched = YES;
+            } else {
+                self.score -= MISMATCH_PENALTY;
+                otherCard.chosen = NO;
+            }
+            break;
+        }
+        self.score -= COST_TO_CHOOSE;
+    }
+}
+// 如果是三张牌的模式：翻第二张牌时开始判断是否匹配，如果匹配，可以继续翻第三张，如果不匹配，则重置；如果第三张也匹配，则得分；如果第三张不匹配，则重置；
+
+- (int) getChosenCardCount {
+    int choseCardCount = 0;
+    for (Card *card in self.cards) {
+        if (card.isChoosen) {
+            choseCardCount ++;
+        }
+    }
+    return choseCardCount;
 }
 
 @end
