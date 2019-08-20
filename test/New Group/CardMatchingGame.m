@@ -117,7 +117,11 @@ static const int COST_TO_CHOOSE = 1;
                     card.matched = YES;
                 } else {
                     self.score -= MISMATCH_PENALTY;
-                    otherCard.chosen = NO;
+                    for (Card *flipCard in self.cards) {
+                        if (flipCard.isChoosen && !flipCard.isMatched) {
+                            flipCard.chosen = NO;
+                        }
+                    }
                     break;
                 }
             }
