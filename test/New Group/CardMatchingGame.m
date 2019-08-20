@@ -106,15 +106,16 @@ static const int COST_TO_CHOOSE = 1;
     Card *card = [self cardAtIndex: index];
     if (card.isChoosen) {
         card.chosen = NO;
-    }
-    if (!card.isMatched && !card.isChoosen) {
+    } else if (!card.isMatched && !card.isChoosen) {
         for (Card *otherCard in self.cards) {
+            NSLog(@"%@", otherCard.content);
             if (otherCard.isChoosen && !otherCard.isMatched) {
                 int matchScore = [card match:@[otherCard]];
                 if (matchScore) {
                     self.score += matchScore * MATCH_BONUS;
                     otherCard.matched = YES;
                     card.matched = YES;
+                    card.chosen = YES;
                 } else {
                     self.score -= MISMATCH_PENALTY;
                     for (Card *flipCard in self.cards) {
@@ -126,7 +127,6 @@ static const int COST_TO_CHOOSE = 1;
                 }
             }
             self.score -= COST_TO_CHOOSE;
-            card.chosen = YES;
         }
     }
 
