@@ -59,6 +59,9 @@
     }else {
         self.gameMode = 2;
     }
+    self.scoreLabel.text = [NSString stringWithFormat:@"score: %d", 0];
+    self.game = nil;
+    [self updateUI];
 }
 - (IBAction)resetCards:(UIButton *)sender {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"确认要重置吗？" preferredStyle:UIAlertControllerStyleAlert];
@@ -78,7 +81,8 @@
 - (IBAction)cardTouchButton:(UIButton *)sender {
     NSInteger chosenButtonIndex = [self.cardButtons indexOfObject:sender];
     int chosenCardCount = [self.game getChosenCardCount];
-    if ( _gameMode == 2) {
+    NSLog(@"game-----mode----%d", _gameMode);
+    if ( _gameMode == 2 || _gameMode == 0) {
         [self.game chooseCardAtIndex:chosenButtonIndex];
     } else if (_gameMode == 3) {
         if (chosenCardCount <= 1) {
