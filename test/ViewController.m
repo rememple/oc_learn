@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "Deck.h"
-#import "PlayingCardDeck.h"
 #import "CardMatchingGame.h"
 
 @interface ViewController ()
@@ -43,8 +42,8 @@
     }
     return _deck;
 }
-- (Deck *) createDeck {
-    return [[PlayingCardDeck alloc] init];
+- (Deck *) createDeck { // abstract
+    return nil;
 }
 
 - (void) setFlipCount:(int)flipCount {
