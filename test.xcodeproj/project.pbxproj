@@ -20,6 +20,7 @@
 		6EF01CFE22F733C30072C9D5 /* PlayingCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF01CFD22F733C30072C9D5 /* PlayingCardDeck.m */; };
 		BB78B2E623005D5E00A92363 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = BB78B2E523005D5E00A92363 /* Deck.m */; };
 		BB78B2E923005DE300A92363 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = BB78B2E823005DE300A92363 /* Card.m */; };
+		BB9A69542320146A009E94E3 /* PlayingCardGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9A69532320146A009E94E3 /* PlayingCardGameViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,8 @@
 		BB78B2E523005D5E00A92363 /* Deck.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Deck.m; sourceTree = "<group>"; };
 		BB78B2E723005DE300A92363 /* Card.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
 		BB78B2E823005DE300A92363 /* Card.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
+		BB9A69522320146A009E94E3 /* PlayingCardGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayingCardGameViewController.h; sourceTree = "<group>"; };
+		BB9A69532320146A009E94E3 /* PlayingCardGameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayingCardGameViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +122,8 @@
 				6EF01CBC22F2EC4B0072C9D5 /* AppDelegate.h */,
 				6EF01CBD22F2EC4B0072C9D5 /* AppDelegate.m */,
 				6EF01CBF22F2EC4B0072C9D5 /* ViewController.h */,
+				BB9A69522320146A009E94E3 /* PlayingCardGameViewController.h */,
+				BB9A69532320146A009E94E3 /* PlayingCardGameViewController.m */,
 				6EF01CC022F2EC4B0072C9D5 /* ViewController.m */,
 				6EF01CF522F71D0B0072C9D5 /* New Group */,
 				6EF01CC222F2EC4B0072C9D5 /* Main.storyboard */,
@@ -303,6 +308,7 @@
 				6EF01CFE22F733C30072C9D5 /* PlayingCardDeck.m in Sources */,
 				BB78B2E923005DE300A92363 /* Card.m in Sources */,
 				6EF01CBE22F2EC4B0072C9D5 /* AppDelegate.m in Sources */,
+				BB9A69542320146A009E94E3 /* PlayingCardGameViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
