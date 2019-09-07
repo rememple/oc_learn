@@ -18,8 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)chooseCardAtIndex:(NSUInteger)index;
 - (void)chooseCardAtIndex2:(NSUInteger)index;
 - (void)chooseCardAtIndex3:(NSUInteger)index;
+- (void)chooseCardatIndexN:(NSUInteger)index gameMode:(NSUInteger) gameModeNumber;
 - (Card *)cardAtIndex:(NSUInteger)index;
-- (int) getChosenCardCount;
+- (BOOL) isSwitchable;
 
 @property (nonatomic, readonly) NSInteger score;
 

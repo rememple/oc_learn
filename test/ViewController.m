@@ -33,6 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.gameMode = 2;
     // Do any additional setup after loading the view.
 }
 
@@ -50,8 +51,19 @@
     _flipCount = flipCount;
     self.flipsLabel.text = [NSString stringWithFormat:@"flips: %d", self.flipCount];
 }
+
+// 切换游戏模式
 - (IBAction)switchMode:(UISwitch *)sender {
     UISwitch *switchButton = (UISwitch*)sender;
+    // 如果游戏正在进行中，不可以切换 -- 优化
+    if (![self.game isSwitchable]) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"游戏进行中，不能切换模式" preferredStyle:UIAlertControllerStyleAlert];
+        _okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *_Nonnull action) {
+        }];
+        [alert addAction:_okAction];
+        [self presentViewController:alert animated:true completion:nil];
+        return;
+    }
     BOOL isButtonOn = [switchButton isOn];
     if (isButtonOn) {
         self.gameMode = 3;
@@ -62,6 +74,8 @@
     self.game = nil;
     [self updateUI];
 }
+
+// 重置卡片按钮
 - (IBAction)resetCards:(UIButton *)sender {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"确认要重置吗？" preferredStyle:UIAlertControllerStyleAlert];
     _okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *_Nonnull action) {
@@ -77,39 +91,13 @@
     // 弹出对话框
     [self presentViewController:alert animated:true completion:nil];
 }
+
+// 点击卡片
 - (IBAction)cardTouchButton:(UIButton *)sender {
     NSInteger chosenButtonIndex = [self.cardButtons indexOfObject:sender];
-    int chosenCardCount = [self.game getChosenCardCount];
-    NSLog(@"game-----mode----%d", _gameMode);
-    if ( _gameMode == 2 || _gameMode == 0) {
-        [self.game chooseCardAtIndex:chosenButtonIndex];
-    } else if (_gameMode == 3) {
-        if (chosenCardCount <= 1) {
-            [self.game chooseCardAtIndex2:chosenButtonIndex];
-        } else if (chosenCardCount == 2) {
-            [self.game chooseCardAtIndex3:chosenButtonIndex];
-        }
-    }
+    [self.game chooseCardatIndexN:chosenButtonIndex gameMode:_gameMode];
     [self updateUI];
     self.flipCount++;
-
-////    UIImage *cardImage = [UIImage imageNamed:@"stanford"];
-//    if ([sender.currentTitle length]) {
-//        [sender setBackgroundImage:[UIImage imageNamed:@"stanford-tree"] forState:UIControlStateNormal];
-//        [sender setTitle:@"" forState:UIControlStateNormal];
-//        self.flipCount++;
-//    } else {
-////        UIImage *cardImage = [UIImage imageNamed:@"cardfront"];
-//        Card *randomCard = [self.deck drawRanomCard];
-//        if (randomCard) {
-//            [sender setBackgroundImage:[UIImage imageNamed:@"cardfront"] forState:UIControlStateNormal];
-//            [sender setTitle: randomCard.content forState:UIControlStateNormal];
-//            self.flipCount++;
-//        } else {
-//            sender.enabled = NO;
-//        }
-//    }
-////    NSLog(@"%d", self.flipCount++);
 }
 
 - (void)updateUI {
