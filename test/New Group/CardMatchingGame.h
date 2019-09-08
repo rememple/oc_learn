@@ -16,8 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithCardCount:(NSInteger)count usingDeck:(Deck *)deck;
 - (void)chooseCardAtIndex:(NSUInteger)index;
-- (void)chooseCardAtIndex2:(NSUInteger)index;
-- (void)chooseCardAtIndex3:(NSUInteger)index;
 - (void)chooseCardatIndexN:(NSUInteger)index gameMode:(NSUInteger) gameModeNumber;
 - (Card *)cardAtIndex:(NSUInteger)index;
 - (BOOL) isSwitchable;

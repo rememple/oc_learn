@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "Deck.h"
 #import "CardMatchingGame.h"
+#import "ScoreDetailController.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
@@ -17,6 +18,7 @@
 @property (strong, nonatomic) CardMatchingGame *game;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
+@property (weak) NSArray *flipHistory;
 
 @property (nonatomic) NSInteger gameMode;
 @property (strong, nonatomic) UIAlertAction *okAction;
@@ -98,6 +100,16 @@
     [self.game chooseCardatIndexN:chosenButtonIndex gameMode:_gameMode];
     [self updateUI];
     self.flipCount++;
+}
+// 查看得分详情
+// 如果要实现从卡牌页面跳转到得分页面，这两个页面都需要embed in navigation controller
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"scoreDetail"]) {
+        if ([segue.destinationViewController isKindOfClass:[ScoreDetailController class]]) {
+            ScoreDetailController *sdc = (ScoreDetailController *)segue.destinationViewController;
+            sdc.scoreDetail = self.flipHistory;// 传递记录翻牌的数组
+        }
+    }
 }
 
 - (void)updateUI {
