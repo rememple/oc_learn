@@ -11,6 +11,7 @@
 @interface CardMatchingGame()
 @property (nonatomic, readwrite) NSInteger score;
 @property (nonatomic, strong) NSMutableArray *cards;
+@property (nonatomic, strong) NSMutableArray *selectedCardGroupArray;
 @end
 
 @implementation CardMatchingGame
@@ -21,6 +22,7 @@
 }
 
 - (instancetype)initWithCardCount:(NSInteger)count usingDeck:(Deck *)deck {
+    _selectedCardGroupArray = [[NSMutableArray alloc] init];
     self = [super init];
     if (self) {
         for (int i = 0; i < count; i++) {
@@ -68,6 +70,8 @@ static const int COST_TO_CHOOSE = 1;
  */
 - (void) chooseCardatIndexN:(NSUInteger)index gameMode: (NSUInteger)gameModeNumber {
     Card *card = [self cardAtIndex: index];
+    NSMutableString *cardGroup = [[NSMutableString alloc] initWithString:@""];
+    [cardGroup appendString: card.content];
     int matchedCardCount = 1;
     int matchTotalScore = 0;
     if (!card.isMatched) {
@@ -80,12 +84,14 @@ static const int COST_TO_CHOOSE = 1;
                     if (!matchScore) {
                         [self resetCard];
                     } else {
+                        [cardGroup appendString:otherCard.content];
                         matchedCardCount ++;
                         matchTotalScore += matchScore;
                         if (matchedCardCount == gameModeNumber && matchedCardCount > 1) {
                             card.chosen = YES;
                             [self modifyCardAttr];
                             self.score += matchTotalScore * MATCH_BONUS;
+                            [_selectedCardGroupArray insertObject:cardGroup atIndex:0];
                         } else {
                             otherCard.chosen = YES;
                             continue;

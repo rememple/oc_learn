@@ -18,12 +18,11 @@
 @property (strong, nonatomic) CardMatchingGame *game;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
-@property (weak) NSArray *flipHistory;
 
 @property (nonatomic) NSInteger gameMode;
 @property (strong, nonatomic) UIAlertAction *okAction;
 @property (strong, nonatomic) UIAlertAction *cancelAction;
-
+@property (weak) NSMutableArray *successCardGroupArray;
 @end
 
 @implementation ViewController
@@ -107,7 +106,7 @@
     if ([segue.identifier isEqualToString:@"scoreDetail"]) {
         if ([segue.destinationViewController isKindOfClass:[ScoreDetailController class]]) {
             ScoreDetailController *sdc = (ScoreDetailController *)segue.destinationViewController;
-            sdc.scoreDetail = self.flipHistory;// 传递记录翻牌的数组
+            sdc.scoreDetail = self.successCardGroupArray;// 传递记录翻牌的数组
         }
     }
 }
@@ -121,6 +120,7 @@
         cardButton.enabled = !card.isMatched;
         self.scoreLabel.text = [NSString stringWithFormat:@"score: %ld", self.game.score];
     }
+    self.successCardGroupArray = [_game selectedCardGroupArray];
 }
 
 - (NSString *)titleForCard:(Card *)card {

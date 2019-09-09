@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL) isSwitchable;
 
 @property (nonatomic, readonly) NSInteger score;
+@property (nonatomic, readonly) NSMutableArray *selectedCardGroupArray;
 
 @end
 
